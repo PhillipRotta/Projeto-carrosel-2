@@ -1,0 +1,129 @@
+body {
+  /*Criando regras que vão ficar padrão em tudo que estiver dentro do body*/
+  font-family: "poppins", sans-serif; /*Fonte que importamos do Google fontes*/
+  max-width: 1280px; /*Largura maxima que o body vai ocupar*/
+  margin: 0 auto; /*0 em cima e em baixo e auto na direita e esquerda*/
+}
+/*Colocando a fonte no body todos os textos vão ficar padrão poppins*/
+
+.carrossel {
+  /*Onde estão todas imagens do projeto*/
+  position: fixed; /*Deixando as img fixas sem rolagem*/
+  top: 0; /*No topo 0*/
+  left: 0; /*Na esquerda 0 ambos vão ficar fixas*/
+  width: 100%; /*Largura 100% em relação a tela*/
+  z-index: -1; /*Eixo de profundidade - 1 os elementos que estavam atrás vieram para frente no caso as escritas*/
+}
+
+.informacoes {
+  /*Onde estão nossos h1 e p */
+  display: none; /*escondendo todas as informações nesse caso os textos*/
+}
+
+.informacoes.ativa {
+  /*estilizando somente os textos com a class ATIVA nesse caso o dragão balerion*/
+  display: block; /*Aqui vai fazer aparecer somente o texto ativo estamos colocando ele a frente*/
+}
+
+.conteudo {
+  /*Estamos pegando tudo que está dentro do conteudo h1, p, botões para fazer o flex-box*/
+  display: flex; /*Pra poder usar o flex-box usando no elemento pai 
+  para poder para alterar os elementos filhos*/
+  flex-direction: column; /*vai deixar um em baixo do outro nossos texto e os botões*/
+  justify-content: space-evenly; /*justificar o conteudo - uniformente centralizando na tela
+  na caixa do conteudo*/
+  min-height: 100vh; /*Altura minima 100vh nesse caso está pegando toda a altura do site
+  nossa janela do navegador computador ou celular*/
+}
+
+@font-face {
+  /*importando a fonte que baixamos padrão Game of Trhones na pasta fontes*/
+  font-family: "GOT";
+  src: url(../fontes/GOT.ttf); /*../ para voltar e encontrar a pasta*/
+}
+
+.informacoes h1 {
+  /*Pegando todos os h1 que estão dentro de informações h1 são os titulos nomes dos dragões*/
+  font-size: 35px; /*Tamanho da fonte os nomes dos dragões*/
+  color: #ffffff;
+  margin-bottom: 80px; /*espaçamento esterno dentro dos elementos margem em baixo
+  do titulo nesse caso*/
+  font-family: "GOT"; /*Importando a fonte*/
+  letter-spacing: 8px; /*espaçamento das letras do titulo*/
+}
+
+.informacoes .descricao {
+  width: 49%; /*Diminuindo o tamanho nesse caso o tamanho da lagura da tela onde estão as descrições*/
+  font-size: 24px; /*Tamanho da fonte do <p>*/
+  color: #ffffff;
+  line-height: 40px; /*espaçamento da altura entre as linhas nesse caso a descrição dos <p> dragões*/
+  height: 300px; /*Aumentando a altura da caixa onde estão os <p>*/
+  overflow: auto; /*Se colocarmos mais texto nos <p> ele cria uma rolagem*/
+  padding-right: 15px; /*Criando um espaçamento na direito da caixa onde estão os <p>
+   se tiver uma rolangem fica mais facil de ver*/
+}
+
+.botoes-carrossel {
+  display: flex; /*Pra poder usar o flex-box usando no elemento pai 
+    para poder alterar os elementos filhos*/
+  justify-content: center; /*Alinhando ao centro*/
+  gap: 20px; /*Espaçamento em todos os elementos*/
+}
+
+.botoes-carrossel .botao {
+  background-color: #ffffff;
+  width: 15px; /*Altura*/
+  height: 15px; /*Largura*/
+  border-radius: 50%; /*Aredondando os botões*/
+  border: 2px solid transparent; /*Borda de 2px de amanho solida transparente */
+  cursor: pointer; /*Colocando a mãozinha quando colocar o mouse em cima*/
+  border-color: #ffffff;
+}
+
+.botoes-carrossel .botao.selecionado {
+  /*Colocando cor no botão que está com a class selecionado no momento do click*/
+  background-color: #1d8346;
+  transform: scale(1.5);
+  box-shadow: 0 0 10px #d9d9d9;
+}
+
+.imagem {
+  width: 100vw; /*Largura do dispositivo */
+  height: 100vh; /*Altura do disposirivo*/
+  object-fit: cover; /*A imagem vai se adequar com o tamanho da tela que colocamos em cima assim nao desorce*/
+  display: none; /*Escondendo todas as imagens*/
+}
+
+.imagem.ativa {
+  display: block; /*Mostrando somente a imagem ativa*/
+  animation: mudarImagem 0.7s; /*Importando a animação*/
+}
+
+@keyframes mudarImagem {
+  /*vamos definir uma serie de passos para criar uma animação*/
+  from {
+    /*De*/
+    opacity: 0.85;
+  }
+  to {
+    /*para*/
+    opacity: 1;
+  }
+}
+
+main::after {
+  /*Vamos criar algo (no caso um gradiente) para ocupar toda a tela*/
+  content: "";
+  min-height: 100vh; /*Altura*/
+  width: 100vw; /*Largura*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 0.05926120448179273) 50%,
+    rgba(0, 0, 0, 1) 90%
+  );
+  z-index: -1; /*Colocando as descrições por cima do gradiente*/
+}

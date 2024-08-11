@@ -1,0 +1,6 @@
+* {
+  /*Fazendo alguns resets globais*/
+  margin: 0; /*Tirando as margens externas que vem como padrão*/
+  padding: 0; /*Tirando as magens internas que vem como padrão*/
+  box-sizing: border-box; /*Facilita trabalharmos com as caixas*/
+}
